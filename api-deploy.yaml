@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-api
+  name: api-deployment
+  namespace: default
 spec:
-  replicas: 3  # Adjust the number of replicas as needed for your application
+  replicas: 2  # Adjust the number of replicas as needed for your application
   selector:
     matchLabels:
-      app: service-api
+      app: api-service
   template:
     metadata:
       labels:
-        app: service-api
+        app: api-service
     spec:
       containers:
-        - name: service-api
+        - name: api-service
           image: martingalero/rest-ex:latest
           ports:
             - containerPort: 80

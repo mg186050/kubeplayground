@@ -2,18 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-deployment
+  namespace: default
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: webapp
+      app: webapp-service
   template:
     metadata:
       labels:
-        app: webapp
+        app: webapp-service
     spec:
       containers:
-        - name: webapp
+        - name: webapp-service
           image: martingalero/webapp-ex:latest
           ports:
             - containerPort: 80
